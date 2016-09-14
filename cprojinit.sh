@@ -32,7 +32,7 @@ CCL := clang
 CFLAGS := -Wall -Wextra -O2 -std=c11
 CDEBUG := -pg -ggdb3
 CLDEBUG := -pg -ggdb3 -fsanitize=address
-GPERF:= -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free -ltcmalloc
+GPERF:= -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free -ltcmalloc -lprofiler
 
 BUILD_DIR := build
 
