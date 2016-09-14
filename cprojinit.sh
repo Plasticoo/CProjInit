@@ -62,3 +62,9 @@ if type "pprof.sh" > /dev/null ; then
 	printf "#!/bin/sh\n# prof files being saved in /tmp/\nHEAPPROFILE=/tmp/heapprof ./$1/$1" > $1/pprof.sh
 	chmod +x $1/pprof.sh
 fi
+
+if type "heapcheck.sh" > /dev/null ; then
+	echo "Creating $1/heapcheck.sh"
+	printf "#!/bin/sh\nHEAPCHECK=1 ./$1/$1" > $1/heapcheck.sh
+	chmod +x $1/heapcheck.sh
+fi
