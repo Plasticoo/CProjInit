@@ -29,8 +29,10 @@ touch $1/Makefile
 cat << EOF >> $1/Makefile
 CC := gcc
 CCL := clang
-CFLAGS := -Wall -Wextra -O2 -std=c11
-CDEBUG := -pg -ggdb3
+CFLAGS := -Wall -Wextra -std=c11
+COPT := -O2
+COPTD := -O0
+CDEBUG := -pg -ggdb3 -fno-inline
 CLDEBUG := -pg -ggdb3 -fsanitize=address
 GPERF:= -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free -ltcmalloc -lprofiler
 GCOV := -fprofile-arcs -ftest-coverage
