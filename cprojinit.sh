@@ -56,3 +56,9 @@ if type "scan-build" > /dev/null ; then
 	printf "#!/bin/sh\nscan-build make -j4" > $1/scanbuild.sh
 	chmod +x $1/scanbuild.sh
 fi
+
+if type "pprof.sh" > /dev/null ; then
+	echo "Creating $1/pprof.sh"
+	printf "#!/bin/sh\n# prof files being saved in /tmp/\nHEAPPROFILE=/tmp/heapprof ./$1/$1" > $1/pprof.sh
+	chmod +x $1/pprof.sh
+fi
