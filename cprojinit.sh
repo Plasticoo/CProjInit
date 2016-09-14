@@ -29,13 +29,15 @@ touch $1/Makefile
 cat << EOF >> $1/Makefile
 CC := gcc
 CCL := clang
-CFLAGS := -Wall -Wextra -ggdb3 -std=c11
+CFLAGS := -Wall -Wextra -O2 -std=c11
+CDEBUG := -pg -ggdb3
+CLDEBUG := -pg -ggdb3
 
 BUILD_DIR := build
 
 SOURCES := \$(wildcard src/*.c)
 OBJS := \$(addprefix \$(BUILD_DIR)/, main.o)
-
+c
 TARGET := $1
 
 \$(TARGET): \$(OBJS)
