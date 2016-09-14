@@ -31,13 +31,13 @@ CC := gcc
 CCL := clang
 CFLAGS := -Wall -Wextra -O2 -std=c11
 CDEBUG := -pg -ggdb3
-CLDEBUG := -pg -ggdb3
+CLDEBUG := -pg -ggdb3 -fsanitize=address
 
 BUILD_DIR := build
 
 SOURCES := \$(wildcard src/*.c)
 OBJS := \$(addprefix \$(BUILD_DIR)/, main.o)
-c
+
 TARGET := $1
 
 \$(TARGET): \$(OBJS)
