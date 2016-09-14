@@ -33,6 +33,7 @@ CFLAGS := -Wall -Wextra -O2 -std=c11
 CDEBUG := -pg -ggdb3
 CLDEBUG := -pg -ggdb3 -fsanitize=address
 GPERF:= -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free -ltcmalloc -lprofiler
+GCOV := -fprofile-arcs -ftest-coverage
 
 BUILD_DIR := build
 
@@ -73,5 +74,9 @@ if type "pprof" > /dev/null ; then
 	echo "Creating $1/cpuprofiler.sh"
 	printf "#!/bin/sh\n# prof files being saved in /tmp/\nCPUPROFILE=/tmp/prof.out ./bin/$1" > $1/cpuprofiler.sh
 	chmod +x $1/cpuprofiler.sh
+fi
+
+if type "valgrind" > /dev/null ; then
+	echo ""
 fi
 
