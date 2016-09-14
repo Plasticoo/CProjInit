@@ -57,21 +57,21 @@ if type "scan-build" > /dev/null ; then
 	chmod +x $1/scanbuild.sh
 fi
 
-if type "pprof.sh" > /dev/null ; then
+if type "pprof" > /dev/null ; then
 	echo "Creating $1/pprof.sh"
-	printf "#!/bin/sh\n# prof files being saved in /tmp/\nHEAPPROFILE=/tmp/heapprof ./$1/$1" > $1/pprof.sh
+	printf "#!/bin/sh\n# prof files being saved in /tmp/\nHEAPPROFILE=/tmp/heapprof ./bin/$1" > $1/pprof.sh
 	chmod +x $1/pprof.sh
 fi
 
-if type "heapcheck.sh" > /dev/null ; then
+if type "pprof" > /dev/null ; then
 	echo "Creating $1/heapcheck.sh"
-	printf "#!/bin/sh\nHEAPCHECK=1 ./$1/$1" > $1/heapcheck.sh
+	printf "#!/bin/sh\nHEAPCHECK=normal ./bin/$1" > $1/heapcheck.sh
 	chmod +x $1/heapcheck.sh
 fi
 
-if type "cpuprofiler.sh" > /dev/null ; then
+if type "pprof" > /dev/null ; then
 	echo "Creating $1/cpuprofiler.sh"
-	printf "#!/bin/sh\n# prof files being saved in /tmp/\nCPUPROFILE=/tmp/prof.out ./$1/$1" > $1/cpuprofiler.sh
+	printf "#!/bin/sh\n# prof files being saved in /tmp/\nCPUPROFILE=/tmp/prof.out ./bin/$1" > $1/cpuprofiler.sh
 	chmod +x $1/cpuprofiler.sh
 fi
 
