@@ -68,3 +68,10 @@ if type "heapcheck.sh" > /dev/null ; then
 	printf "#!/bin/sh\nHEAPCHECK=1 ./$1/$1" > $1/heapcheck.sh
 	chmod +x $1/heapcheck.sh
 fi
+
+if type "cpuprofiler.sh" > /dev/null ; then
+	echo "Creating $1/cpuprofiler.sh"
+	printf "#!/bin/sh\n# prof files being saved in /tmp/\nCPUPROFILE=/tmp/prof.out ./$1/$1" > $1/cpuprofiler.sh
+	chmod +x $1/cpuprofiler.sh
+fi
+
