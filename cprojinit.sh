@@ -61,21 +61,34 @@ if type "scan-build" > /dev/null ; then
 fi
 
 if type "pprof" > /dev/null ; then
-	echo "Creating $1/pprof.sh"
-	printf "#!/bin/sh\n# prof files being saved in /tmp/\nHEAPPROFILE=/tmp/heapprof ./bin/$1" > $1/pprof.sh
-	chmod +x $1/pprof.sh
+	echo "Creating $1/gproftools.sh"
+	cat << EOF >> $1/gproftools.sh
+#!/bin/sh
+
+  if [ "\$#" -lt 2 ]; then
+    echo "Usage: ./gproftools.sh [tool] [program]\ntools: "
+    exit 1
+  fi
+
+echo "Tool: \$1"
+
+if [ "\$1" == "pprof" ]; then
+  shift
+  HEAPPROFILE=/tmp/heapprof \$@
 fi
 
-if type "pprof" > /dev/null ; then
-	echo "Creating $1/heapcheck.sh"
-	printf "#!/bin/sh\nHEAPCHECK=normal ./bin/$1" > $1/heapcheck.sh
-	chmod +x $1/heapcheck.sh
+if [ "\$1" == "heapcheck" ]; then
+  shift
+  HEAPCHECK=normal \$@
 fi
 
-if type "pprof" > /dev/null ; then
-	echo "Creating $1/cpuprofiler.sh"
-	printf "#!/bin/sh\n# prof files being saved in /tmp/\nCPUPROFILE=/tmp/prof.out ./bin/$1" > $1/cpuprofiler.sh
-	chmod +x $1/cpuprofiler.sh
+if [ "\$1" == "cpuprofiler" ]; then
+  shift
+  CPUPROFILE=/tmp/prof.out \$@
+fi
+
+EOF
+
 fi
 
 if type "valgrind" > /dev/null ; then
