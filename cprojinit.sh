@@ -45,7 +45,10 @@ OBJS := \$(addprefix \$(BUILD_DIR)/, main.o)
 TARGET := $1
 
 \$(TARGET): \$(OBJS)
-	\$(CC) \$(CFLAGS) \$(OBJS) -o bin/\$(TARGET)
+	\$(CC) \$(CFLAGS) \$(COPT) \$(OBJS) -o bin/\$(TARGET)
+
+gperf: \$(OBJS)
+	\$(CC) \$(CFLAGS) \$(COPTD) \$(GPERF) \$(OBJS) -o bin/\$(TARGET)
 
 \$(BUILD_DIR)/%.o: src/%.c
 	\$(CC) \$(CFLAGS) -c $< -o \$@
