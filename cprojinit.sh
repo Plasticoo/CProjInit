@@ -92,6 +92,7 @@ fi
 
 EOF
 
+	chmod +x $1/gproftools.sh
 fi
 
 if type "valgrind" > /dev/null ; then
