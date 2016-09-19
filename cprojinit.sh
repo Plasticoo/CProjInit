@@ -33,7 +33,7 @@ CFLAGS := -Wall -Wextra -std=c11
 COPT := -O2
 COPTD := -O0
 CDEBUG := -pg -ggdb3 -fno-inline
-CLDEBUG := -pg -ggdb3 -fsanitize=address
+CLDEBUG := -fsanitize=address
 GPERF:= -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free -ltcmalloc -lprofiler
 GCOV := -fprofile-arcs -ftest-coverage
 
@@ -45,19 +45,19 @@ OBJS := \$(addprefix \$(BUILD_DIR)/, main.o)
 TARGET := $1
 
 \$(TARGET): \$(OBJS)
-	\$(CC) \$(CFLAGS) \$(COPT) \$(OBJS) -o bin/\$(TARGET)
+			\$(CC) \$(CFLAGS) \$(COPT) \$(OBJS) -o bin/\$(TARGET)
 
 gperf: \$(OBJS)
-	\$(CC) \$(CFLAGS) \$(COPTD) \$(GPERF) \$(OBJS) -o bin/\$(TARGET)
+	   \$(CC) \$(CFLAGS) \$(COPTD) \$(GPERF) \$(OBJS) -o bin/\$(TARGET)
 
 clangd: \$(OBJS)
-    \$(CC) \$(CFLAGS) \$(COPTD) \$(CLDEBUG) \$(OBJS) -o bin/\$(TARGET)
+		\$(CCL) \$(CFLAGS) \$(COPTD) \$(CLDEBUG) \$(OBJS) -o bin/\$(TARGET)
 
 gccd: \$(OBJS)
-    \$(CC) \$(CFLAGS) \$(COPTD) \$(CDEBUG) \$(OBJS) -o bin/\$(TARGET)
+	  \$(CC) \$(CFLAGS) \$(COPTD) \$(CDEBUG) \$(OBJS) -o bin/\$(TARGET)
 
 \$(BUILD_DIR)/%.o: src/%.c
-	\$(CC) \$(CFLAGS) -c $< -o \$@
+				   \$(CC) \$(CFLAGS) -c $< -o \$@
 
 clean:
 	rm \$(BUILD_DIR)/*.o
