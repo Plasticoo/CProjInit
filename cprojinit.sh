@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ "$#" -lt 1 ]; then
+    echo "Usage: ./cprojinit.sh [new_dir]"
+    exit 1
+  fi
+
 echo "Creating project directory..."
 mkdir $1
 
