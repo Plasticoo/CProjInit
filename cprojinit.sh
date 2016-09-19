@@ -80,7 +80,7 @@ if type "pprof" > /dev/null ; then
 #!/bin/sh
 
   if [ "\$#" -lt 2 ]; then
-    echo "Usage: ./gproftools.sh [tool] [program]\ntools: "
+    echo "Usage: ./gproftools.sh [tool] [program]\ntools: pprof heapcheck cpuprofiler"
     exit 1
   fi
 
