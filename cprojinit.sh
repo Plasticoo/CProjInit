@@ -50,6 +50,12 @@ TARGET := $1
 gperf: \$(OBJS)
 	\$(CC) \$(CFLAGS) \$(COPTD) \$(GPERF) \$(OBJS) -o bin/\$(TARGET)
 
+clangd: \$(OBJS)
+    \$(CC) \$(CFLAGS) \$(COPTD) \$(CLDEBUG) \$(OBJS) -o bin/\$(TARGET)
+
+gccd: \$(OBJS)
+    \$(CC) \$(CFLAGS) \$(COPTD) \$(CDEBUG) \$(OBJS) -o bin/\$(TARGET)
+
 \$(BUILD_DIR)/%.o: src/%.c
 	\$(CC) \$(CFLAGS) -c $< -o \$@
 
