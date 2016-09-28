@@ -133,3 +133,10 @@ EOF
 	chmod +x $1/valgrind.sh
 fi
 
+if type "git" > /dev/null ; then
+	echo "Creating $1/.gitignore"
+	cat << EOF >> $1/.gitignore
+bin/
+build/
+EOF
+fi
