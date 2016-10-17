@@ -37,7 +37,7 @@ CCL := clang
 CFLAGS := -Wall -Wextra -std=c11
 COPT := -O2
 COPTD := -O0
-CDEBUG := -pg -ggdb3 -fno-inline
+CDEBUG := -ggdb
 CLDEBUG := -fsanitize=address
 GPERF:= -fno-builtin-malloc -fno-builtin-calloc -fno-builtin-realloc -fno-builtin-free -ltcmalloc -lprofiler
 GCOV := -fprofile-arcs -ftest-coverage
